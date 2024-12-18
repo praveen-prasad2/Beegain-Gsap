@@ -3,6 +3,10 @@ body {
     color: #000;
 }
 
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.8rem;
     padding-left: 0.8rem;
