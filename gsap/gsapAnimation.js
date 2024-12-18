@@ -1,13 +1,6 @@
-window.lazyLoadOptions = { elements_selector: ".lazy", threshold: 1200 };
-window.addEventListener(
-  "LazyLoad::Initialized",
-  function (event) {
-    window.lazyLoadInstance = event.detail.instance;
-  },
-  !1
-);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
+gsap.registerPlugin( DrawSVGPlugin);
 gsap.defaults({ ease: Linear.easeNone });
 if (!Array.prototype.forEach) {
   Array.prototype.forEach = function (fn, scope) {
