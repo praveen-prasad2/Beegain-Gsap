@@ -982,3 +982,12 @@ body.scrollPathDisabled #viewport {
 
 
 }
+
+/* Clamp  */
+
+.clamp-svg{
+    width: 400px;
+    position: absolute;
+    left: 18rem;
+    top: 20rem;
+}
