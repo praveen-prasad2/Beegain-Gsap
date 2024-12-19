@@ -69,23 +69,38 @@ function Grow() {
           },
         },
       });
-      scrollTweenObject.to(self.desktop.bee, {
-        motionPath: {
-          path: "#scrollPath",
-          align: "#scrollPath",
-          autoRotate: !0,
-          start: 1,
-          end: 0,
-        },
-        ease: "linear",
-        onUpdate: function () {
-          const x = self.desktop.beeProps("x");
-          const y = self.desktop.beeProps("y");
-          self.desktop.setOrigin(x + "px " + y + "px");
-          self.desktop.setX(-self.desktop.clampX(x - self.desktop.vw / 2));
-          self.desktop.setY(-self.desktop.clampY(y - self.desktop.vh / 2));
-        },
-      });
+
+
+self.desktop.clampX = gsap.utils.clamp(
+  0,
+  self.desktop.worldWidth - self.desktop.vw
+);
+self.desktop.clampY = gsap.utils.clamp(
+  0,
+  self.desktop.worldHeight - self.desktop.vh
+);
+
+scrollTweenObject.to(self.desktop.bee, {
+  motionPath: {
+    path: "#scrollPath",
+    align: "#scrollPath",
+    autoRotate: true,
+    start: 1,
+    end: 0,
+  },
+  ease: "linear",
+  onUpdate: function () {
+    const x = self.desktop.beeProps("x");
+    const y = self.desktop.beeProps("y");
+    const clampedX = self.desktop.clampX(x - self.desktop.vw / 2);
+    const clampedY = self.desktop.clampY(y - self.desktop.vh / 2);
+
+    console.log("x:", x, "clampedX:", clampedX, "y:", y, "clampedY:", clampedY);
+    self.desktop.setOrigin(clampedX + "px " + clampedY + "px");
+    self.desktop.setX(-clampedX);
+    self.desktop.setY(-clampedY);
+  },
+});
       return scrollTweenObject;
     },
     screen1: function () {
